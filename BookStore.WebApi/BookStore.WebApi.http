@@ -1,0 +1,66 @@
+@ProjectName_HostAddress = https://localhost:5001
+
+### Get Author by ID
+GET {{ProjectName_HostAddress}}/api/Author/{id]
+Accept: application/json
+
+###
+
+### Create Author
+POST {{ProjectName_HostAddress}}/api/Author
+Content-Type: application/json
+Accept: application/json
+
+{
+}
+
+###
+
+### Update Author
+PUT {{ProjectName_HostAddress}}/api/Author/{id}
+Content-Type: application/json
+Accept: application/json
+
+{
+}
+
+###
+
+### Delete Author
+DELETE {{ProjectName_HostAddress}}/api/Author/{id}
+Accept: application/json
+
+###
+
+### Get Book by ID
+GET {{ProjectName_HostAddress}}/api/Book/{id]
+Accept: application/json
+
+###
+
+### Create Book
+POST {{ProjectName_HostAddress}}/api/Book
+Content-Type: application/json
+Accept: application/json
+
+{
+}
+
+###
+
+### Update Book
+PUT {{ProjectName_HostAddress}}/api/Book/{id}
+Content-Type: application/json
+Accept: application/json
+
+{
+}
+
+###
+
+### Delete Book
+DELETE {{ProjectName_HostAddress}}/api/Book/{id}
+Accept: application/json
+
+###
+
