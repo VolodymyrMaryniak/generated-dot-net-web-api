@@ -7,20 +7,21 @@ public class Repository<TEntity>(AppDbContext dbContext) : IRepository<TEntity> 
 {
     protected readonly DbSet<TEntity> DbSet = dbContext.Set<TEntity>();
     
-    public async Task<TEntity?> FindAsync(int id)
+    public async Task<TEntity?> GetByIdAsync(int id)
     {
-        return await DbSet.FindAsync(id);
+        return await DbSet.Where(e => e.Id == id).AsNoTracking().FirstOrDefaultAsync();
     }
     
     public async Task<TEntity> CreateAsync(TEntity entity)
     {
-        await DbSet.AddAsync(entity);
+        dbContext.Entry(entity).State = EntityState.Added;
+        await dbContext.SaveChangesAsync();
         return entity;
     }
     
     public async Task UpdateAsync(TEntity entity)
     {
-        DbSet.Update(entity);
+        dbContext.Entry(entity).State = EntityState.Modified;
         await dbContext.SaveChangesAsync();
     }
 

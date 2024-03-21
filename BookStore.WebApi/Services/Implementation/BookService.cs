@@ -10,7 +10,7 @@ public class BookService(IRepository<BookEntity> bookRepository, IMapper mapper)
 {
     public async Task<BookResponseDto?> GetBookAsync(int id)
     {
-        var bookEntity = await bookRepository.FindAsync(id);
+        var bookEntity = await bookRepository.GetByIdAsync(id);
         return mapper.Map<BookResponseDto?>(bookEntity);
     }
     
@@ -23,7 +23,7 @@ public class BookService(IRepository<BookEntity> bookRepository, IMapper mapper)
     
     public async Task<UpdateEntityResult> UpdateBookAsync(int id, UpdateBookRequestDto request)
     {
-        var bookEntity = await bookRepository.FindAsync(id);
+        var bookEntity = await bookRepository.GetByIdAsync(id);
         if (bookEntity is null)
             return UpdateEntityResult.NotFound;
         

@@ -10,7 +10,7 @@ public class AuthorService(IRepository<AuthorEntity> authorRepository, IMapper m
 {
     public async Task<AuthorResponseDto?> GetAuthorAsync(int id)
     {
-        var authorEntity = await authorRepository.FindAsync(id);
+        var authorEntity = await authorRepository.GetByIdAsync(id);
         return mapper.Map<AuthorResponseDto?>(authorEntity);
     }
     
@@ -23,7 +23,7 @@ public class AuthorService(IRepository<AuthorEntity> authorRepository, IMapper m
     
     public async Task<UpdateEntityResult> UpdateAuthorAsync(int id, UpdateAuthorRequestDto request)
     {
-        var authorEntity = await authorRepository.FindAsync(id);
+        var authorEntity = await authorRepository.GetByIdAsync(id);
         if (authorEntity is null)
             return UpdateEntityResult.NotFound;
         
